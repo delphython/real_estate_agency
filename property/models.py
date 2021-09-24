@@ -4,7 +4,6 @@ from django.utils import timezone
 
 
 class Flat(models.Model):
-    user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
     owner = models.CharField('ФИО владельца', max_length=200)
     owners_phonenumber = models.CharField('Номер владельца', max_length=20)
     created_at = models.DateTimeField(
@@ -53,3 +52,17 @@ class Flat(models.Model):
 
     def __str__(self):
         return f'{self.town}, {self.address} ({self.price}р.)'
+
+
+class Complaint(models.Model):
+    user = models.ForeignKey(User, verbose_name='Кто жаловался',
+        null=True, on_delete=models.SET_NULL)
+    flat = models.IntegerField(
+        'Квартира, на которую пожаловались',
+        db_index=True)
+    compliant_text = models.TextField(
+        'Текст жалобы',
+        db_index=True)
+
+    def __str__(self):
+        return 'Жалобы'
