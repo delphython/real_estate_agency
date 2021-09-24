@@ -11,4 +11,9 @@ class FLatAdmin(admin.ModelAdmin):
     list_editable = ('new_building',)
     list_filter = ('new_building', 'rooms_number', 'has_balcony',)
 
+
+class ComplaintAdmin(admin.ModelAdmin):
+    raw_id_fields = ("newspaper",)
+
+
 admin.site.register(Flat, FLatAdmin)
