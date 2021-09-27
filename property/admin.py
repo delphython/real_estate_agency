@@ -15,8 +15,8 @@ class FLatAdmin(admin.ModelAdmin):
 
 class ComplaintAdmin(admin.ModelAdmin):
     list_display = ('user', 'flat', 'compliant_text',)
-    list_editable = ('user', 'flat', 'compliant_text',)
-    # raw_id_fields = ("flat",)
+    list_editable = ('flat', 'compliant_text',)
+    raw_id_fields = ("flat",)
 
 
 admin.site.register(Flat, FLatAdmin)

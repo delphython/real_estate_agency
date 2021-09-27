@@ -57,9 +57,12 @@ class Flat(models.Model):
 class Complaint(models.Model):
     user = models.ForeignKey(User, verbose_name='Кто жаловался',
         null=True, on_delete=models.SET_NULL)
-    flat = models.IntegerField(
-        'Квартира, на которую пожаловались',
-        db_index=True)
+    flat = models.ForeignKey(
+        Flat,
+        verbose_name='Квартира, на которую пожаловались',
+        db_index=True,
+        null=True,
+        on_delete=models.SET_NULL)
     compliant_text = models.TextField(
         'Текст жалобы',
         db_index=True)
