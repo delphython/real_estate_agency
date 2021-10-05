@@ -49,7 +49,7 @@ class Flat(models.Model):
 
     new_building = models.NullBooleanField('Новостройка', db_index=True)
 
-    liked_by = models.ManyToManyField(User, related_name="liked_flats",
+    liked_by = models.ManyToManyField(User, related_name='liked_flats',
         verbose_name='Кто лайкнул', blank=True,)
 
     def __str__(self):
@@ -77,7 +77,7 @@ class Owner(models.Model):
     flat = models.ManyToManyField(
         Flat,
         verbose_name='Квартиры в собственности',
-        related_name="flats",
+        related_name='flats',
         db_index=True)
     owner = models.CharField('ФИО владельца', max_length=200, db_index=True)
     owners_phonenumber = models.CharField('Номер владельца', max_length=20,
