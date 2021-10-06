@@ -87,7 +87,9 @@ class Owner(models.Model):
         Flat,
         verbose_name='Квартиры в собственности',
         related_name='flats',
-        db_index=True)
+        db_index=True,
+        null=True
+    )
     owner = models.CharField('ФИО владельца', max_length=200, db_index=True)
     owners_phonenumber = models.CharField(
         'Номер владельца',
